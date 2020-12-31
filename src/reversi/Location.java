@@ -12,6 +12,9 @@ package reversi;
 public class Location {
     private int Row;
     private int Column;
+
+    public Location() {
+    }
     
     public Location(int Row, int Column) {
         this.Row = Row;

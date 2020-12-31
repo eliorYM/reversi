@@ -94,6 +94,7 @@ public class Board {
     }
     
     public void fill(Location l, Type t, int i, int j){
+        board[l.getRow()][l.getColumn()].setType(t);
         for(int k = 1; board[l.getRow() + i * k][l.getColumn() + j * k].getType() != t; k++){
             board[l.getRow() + i * k][l.getColumn() + j * k].setType(t);
         }

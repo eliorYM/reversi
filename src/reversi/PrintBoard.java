@@ -12,10 +12,17 @@ package reversi;
 public class PrintBoard {
     
     public void printBoard(Board board){
+        System.out.printf("%-3s", " ");
+        for (int i = 0; i < 8; i++) {
+            System.out.printf("%-3d", i);
+        }
+        System.out.println("");
+        
          for (int i = 0; i < 8; i++) {
+             System.out.printf("%-3d", i);
              for (int j = 0; j < 8; j++) {
                  if(board.board[i][j].getType() == Type.Empty){
-                     System.out.printf("[] ");
+                     System.out.printf("%-3s", "[]");
                  } else if(board.board[i][j].getType() == Type.Black) {
                      System.out.printf("%-3d", 8);
                  } else if(board.board[i][j].getType() == Type.White){
@@ -24,5 +31,6 @@ public class PrintBoard {
              }
              System.out.println("");
          }
+         System.out.println("");
      }
 }
