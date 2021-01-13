@@ -26,6 +26,10 @@ public class Board {
         this.board = board;
     }
     
+    public Tile[][] getBoard(){
+        return this.board;
+    }
+    
     public void init() {
         board[3][3].setType(Type.White);
         board[3][4].setType(Type.Black);
@@ -99,4 +103,25 @@ public class Board {
             board[l.getRow() + i * k][l.getColumn() + j * k].setType(t);
         }
     }
+    
+    public boolean isWon(Board b){
+       
+        int wCount = 0, bCount = 0, eCount = 0;
+        
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if(board[i][j].getType() == Type.Black){
+                    bCount++;
+                }else if(board[i][j].getType() == Type.White){
+                    wCount++;
+                }else {
+                    eCount++;
+                }
+            }            
+        }
+            if (wCount == 0 || bCount == 0 || eCount == 0) {
+                return false;                       
+            }
+       return true;        
+}
 }

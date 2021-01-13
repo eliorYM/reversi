@@ -41,22 +41,46 @@ public class Reversi {
     
     
     public static void play() {
+        
         Board b = new Board();
         Location l = new Location();
-        boolean turn = true;
+        boolean turn = false;
         PrintBoard p = new PrintBoard();
         
         p.printBoard(b);
-        while(true/*!b.isWon*/){
+        
+        do {      
+            
+            turn = !turn;
             Type t = turn ? Type.White : Type.Black;
+            
             do {              
                 l = getTile(turn);
             } while (!(b.validLocation(l.getRow(), l.getColumn()) && b.movIsLegal(l, t)));
+            
             b.newPiece(l, t);
             p.printBoard(b);
-            turn = !turn;
-        }
+            
+        } while (b.isWon(b));
+        {
+        int wCount = 0, bCount = 0;
         
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if(b.getBoard()[i][j].getType() == Type.Black){
+                    bCount++;
+                }else if(b.getBoard()[i][j].getType() == Type.White){
+                    wCount++;
+                }
+            }
+        }   
+            if(wCount > bCount){
+                System.out.println("white is won !");
+            }else{
+                System.out.println("black is won !");
+            }
+        
+        }
     }
     
 }
