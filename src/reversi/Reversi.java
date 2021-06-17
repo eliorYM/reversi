@@ -6,7 +6,6 @@
 package reversi;
 
 import java.io.IOException;
-import static reversi.Play.play;
 
 /**
  *
